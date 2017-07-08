@@ -1,0 +1,13 @@
+<service>
+  <id>EAPCONTROLLER</id>
+  <name>TP-LINK EAP Controller</name>
+  <description>TP-LINK EAP Controller Server</description>
+  <env name="JAVA_HOME" value="%BASE%\jre"/>
+  <env name="PATH" value="%BASE%\jre\bin;%PATH%"/>
+  <executable>%BASE%\jre\bin\eap.exe</executable>
+  <arguments>-server -Xms128m -Xmx1024m -XX:MaxHeapFreeRatio=60 -XX:MinHeapFreeRatio=30 -XX:+UseSerialGC -XX:+HeapDumpOnOutOfMemoryError -Deap.home="%BASE%" -Dsun.rmi.transport.tcp.handshakeTimeout=1000 -cp "%BASE%/lib/com.tp-link.eap.start-0.0.1-SNAPSHOT.jar;%BASE%/lib/*;%BASE%/external-lib/*" com.tp_link.eap.start.EapMain</arguments>
+  <logpath>%BASE%\logs-winsw</logpath>
+  <log mode="roll-by-time">
+    <pattern>yyyyMMdd</pattern>
+  </log>
+</service>
